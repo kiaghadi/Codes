@@ -72,11 +72,13 @@ for i=1:Mann_loc_beg(2)
     dummy=fgetl (fort_13_id);
 end
 
-fclose(fort_13_id);
+
 
 %getting number and values of manning coefficients
 Manning_count = fscanf(fort_13_id, '%d ', 1);  % number of coefficients
 Manning_info = fscanf(fort_13_id, '%lf', [2,nn]); % manning values
+
+fclose(fort_13_id);
 
 Manning_node= Manning_info(1,:);          % node numbers with manning
 Manning_values= Manning_info(2,:);        % manning coefficients
