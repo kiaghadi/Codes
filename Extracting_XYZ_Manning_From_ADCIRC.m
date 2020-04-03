@@ -76,7 +76,7 @@ end
 
 %getting number and values of manning coefficients
 Manning_count = fscanf(fort_13_id, '%d ', 1);  % number of coefficients
-Manning_info = fscanf(fort_13_id, '%lf', [2,nn]); % manning values
+Manning_info = fscanf(fort_13_id, '%lf', [2,Manning_count]); % manning values
 
 fclose(fort_13_id);
 
