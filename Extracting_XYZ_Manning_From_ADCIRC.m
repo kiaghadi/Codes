@@ -12,17 +12,17 @@ close all;
 %% SETTING THE UPPER AND LOWER BOUNDS FOR X and Y
 
 % please input the coordinates of the box you want to obtain data
-Xupper=-90;
-Yupper=30;
-Xlower=-93;
-Ylower=25;
+Xupper=-93.25;
+Yupper=30.5;
+Xlower=-94.25;
+Ylower=29.8;
 
 
 %% R E A D   A D C I R C   fort.14
 
 
 fort_14_file = 'IO_Files/fort_S2G.14';
-fort_13_file = 'IO_Files/fort_S2G.13';
+fort_13_file = 'IO_Files/newfile.txt';
 
 fort_14_id = fopen( fort_14_file, 'r');
 First_Line = fgetl ( fort_14_id );           % first line- no need
@@ -97,6 +97,10 @@ info=[n', x', y', z', manning];
 Truncated_info_order=find(info(:,2)> Xlower & info(:,2)< Xupper &...
     info(:,3)> Ylower & info(:,3)< Yupper);
 Truncated_info=info(Truncated_info_order,:);
+
+
+dlmwrite('ADCIRC_TRUNCATED.csv', Truncated_info, 'delimiter', ',', 'precision', 10);
+
 
 disp('Done ! Hopefully successfully !');
 toc
